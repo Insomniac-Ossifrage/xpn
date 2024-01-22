@@ -1,0 +1,81 @@
+cmake_minimum_required(VERSION 3.21)
+project(xpn)
+enable_language(C CXX)
+
+set(CMAKE_C_STANDARD 17)
+set(CMAKE_C_EXTENSIONS ON)
+
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
+# Packages
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+
+# Source files
+# SUBDIRS = src/base   src/xpn_client   src/utils   src/bypass   src/mpi_server  src/sck_server  src/tcp_server
+
+# Compiler flags
+add_compile_options("-D_GNU_SOURCE") # Enable GNU extensions (e.g. off64_t)
+add_compile_options("-D_POSIX_C_SOURCE=200809L") # Enable POSIX extensions
+# "-D_LARGE_FILE_SOURCE=1" "-D_FILE_OFFSET_BITS=64")
+
+#[[
+    XPN Base
+]]
+
+file(GLOB _base_sources "src/base/*.c" )
+add_library(xpn_base OBJECT ${_base_sources})
+target_include_directories(xpn_base PUBLIC
+    "${PROJECT_SOURCE_DIR}/include"
+    "${PROJECT_SOURCE_DIR}/include/base"
+)
+target_link_libraries(xpn_base PUBLIC Threads::Threads)
+
+
+#[[
+    XPN Client
+]]
+
+# NFI Variants
+#option(ENABLE_XPN_CLIENT_NFS    "Enable NFS support for XPN client"     OFF)
+#option(ENABLE_XPN_CLIENT_NFS3   "Enable NFS3 support for XPN client"    OFF)
+#option(ENABLE_XPN_CLIENT_MPI    "Enable MPI support for XPN client"     OFF)
+option(ENABLE_XPN_CLIENT_SCK    "Enable SCK support for XPN client"     ON)
+#option(ENABLE_XPN_CLIENT_TCP    "Enable TCP support for XPN client"     OFF)
+
+if (ENABLE_XPN_CLIENT_SCK)
+    file(GLOB _xpn_client_sck_sources "src/xpn_client/nfi/nfi_sck_server/*.c")
+    list(APPEND _xpn_client_nfi_extra_sources ${_xpn_client_sck_sources})
+    list(APPEND _xpn_client_nfi_extra_includes "${PROJECT_SOURCE_DIR}/include/xpn_client/nfi/nfi_sck_server")
+endif (ENABLE_XPN_CLIENT_SCK)
+
+# NFI Sources
+file(GLOB _xpn_client_nfi_sources_common "src/xpn_client/nfi/common/*.c")
+file(GLOB _xpn_client_nfi_sources_local "src/xpn_client/nfi/nfi_local/*.c")
+
+# XPN Core
+file(GLOB _xpn_client_core "src/xpn_client/xpn/xpn_simple/xpncore/*.c")
+file(GLOB _xpn_client_policy "src/xpn_client/xpn/xpn_simple/policy/*.c")
+file(GLOB _xpn_client_ep "src/xpn_client/*.c")
+
+# Main library
+# AM_CFLAGS         = -DASYNC_CLOSE=1 -DFILESYSTEM_DLSYM=1
+
+add_library(xpn_client SHARED
+    ${_base_sources}
+    ${_xpn_client_core}
+    ${_xpn_client_policy}
+    ${_xpn_client_ep}
+    ${_xpn_client_nfi_sources_common}
+    ${_xpn_client_nfi_sources_local}
+    ${_xpn_client_nfi_extra_sources}
+)
+target_include_directories(xpn_client PUBLIC
+    "${PROJECT_SOURCE_DIR}/include"
+    "${PROJECT_SOURCE_DIR}/include/base"
+    "${PROJECT_SOURCE_DIR}/include/xpn_client"
+    "${PROJECT_SOURCE_DIR}/include/xpn_client/nfi"
+    "${PROJECT_SOURCE_DIR}/include/xpn_client/nfi/nfi_local"
+    "${PROJECT_SOURCE_DIR}/include/xpn_client/xpn/xpn_simple"
+    ${_xpn_client_nfi_extra_includes}
+)
