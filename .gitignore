@@ -1,3 +1,5 @@
+
+
 # http://www.gnu.org/software/automake
 
 /ar-lib
@@ -37,3 +39,27 @@ include/config.h.in
 src/base/Makefile.in
 src/utils/Makefile.in
 src/xpn_client/Makefile.in
+
+
+### CLion template
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Generated files
+.idea/**/contentModel.xml
+
+# CMake
+cmake-build-*/
+
+# File-based project format
+*.iws
+
+# SonarLint plugin
+.idea/sonarlint/
+
