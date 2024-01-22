@@ -21,10 +21,11 @@
 /* ... Include / Inclusion ........................................... */
 
 #include "nfi/nfi_worker.h"
-#include "nfi/nfi_ops.h"
 
 #include <pthread.h>
+#include <string.h>
 
+#include "nfi/nfi_ops.h"
 
 /* ... Global vars. / Variables globales ............................. */
 

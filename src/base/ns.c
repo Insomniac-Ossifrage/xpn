@@ -23,8 +23,10 @@
  ***********************************************/
 #include "base/ns.h"
 
+#include <arpa/inet.h>
 #include <bits/local_lim.h>
 #include <netdb.h>
+#include <string.h>
 #include <unistd.h>
 
 /************************************************

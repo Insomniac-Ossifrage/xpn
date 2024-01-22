@@ -24,6 +24,7 @@
 
 #include "nfi_local.h"
 
+#include <string.h>
 
 /* ... Const / Const ................................................. */
 

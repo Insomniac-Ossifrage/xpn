@@ -22,10 +22,11 @@
 
    /* ... Include / Inclusion ........................................... */
 
-      #include "base/urlstr.h"
+#include "base/urlstr.h"
 
+#include <string.h>
 
-   /* ... Functions / Funciones ......................................... */
+/* ... Functions / Funciones ......................................... */
 
 
 

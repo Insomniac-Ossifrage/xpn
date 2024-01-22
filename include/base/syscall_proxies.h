@@ -122,7 +122,7 @@
   int dlsym_chown  (char *path, uid_t owner, gid_t group);
   int dlsym_fcntl  (int fd, int cmd, long arg);
   int dlsym_access (const char *path, int mode);
-  char *dlsym_realpath (const char *restrict path, char *restrict resolved_path);
+  char *dlsym_realpath (const char *__restrict__ path, char *__restrict__ resolved_path);
   int dlsym_fsync (int fd);
   int dlsym_flock (int fd, int operation);
 

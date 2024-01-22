@@ -20,8 +20,12 @@
  */
 
 
-#ifndef _FILESYSTEM_H_
-#define _FILESYSTEM_H_
+#ifndef FILESYSTEM_H_
+#define FILESYSTEM_H_
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
   /* ... Include / Inclusion ........................................... */
 
@@ -100,6 +104,9 @@
     #define real_posix_readdir(dirptr)                       dlsym_readdir(dirptr)
     #define real_posix_closedir(dirptr)                      dlsym_closedir(dirptr)
   #else
+    #include <fcntl.h>
+    #include <unistd.h>
+
     #define real_posix_creat(path,mode)                      creat(path,mode)
     #define real_posix_open(path,flags)                      open(path,flags)
     #define real_posix_open2(path,flags,mode)                open(path,flags,mode)
@@ -122,4 +129,8 @@
     #define real_posix_closedir(dirptr)                      closedir(dirptr)
   #endif
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif // FILESYSTEM_H_

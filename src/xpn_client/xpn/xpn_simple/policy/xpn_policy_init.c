@@ -20,6 +20,8 @@
 
 #include "xpn/xpn_simple/xpn_policy_init.h"
 
+#include <string.h>
+
 extern struct xpn_partition xpn_parttable[XPN_MAX_PART];
 
 char * param_get(char * key)

@@ -24,6 +24,8 @@
 
 #include "mpi_server_comm.h"
 
+#include <bits/local_lim.h>
+#include <unistd.h>
 
 /* ... Const / Const ................................................. */
 

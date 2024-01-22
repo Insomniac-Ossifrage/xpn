@@ -87,7 +87,7 @@
   int     (*real_chown)(char *, uid_t, gid_t) = NULL;
   int     (*real_fcntl)(int, int, long) = NULL;
   int     (*real_access)(const char *, int) = NULL;
-  char*   (*real_realpath)(const char *restrict, char *restrict) = NULL;
+  char*   (*real_realpath)(const char *__restrict__, char *__restrict__) = NULL;
   int     (*real_fsync)(int) = NULL;
   int     (*real_flock)(int, int) = NULL;
   void*   (*real_mmap)(void *, size_t, int, int, int, off_t) = NULL;
@@ -755,13 +755,13 @@
     return ret;
   }
 
-  char *dlsym_realpath(const char *restrict path, char *restrict resolved_path)
+  char *dlsym_realpath(const char *__restrict__ path, char *__restrict__ resolved_path)
   {
     debug_info("dlsym_realpath: before realpath...\n");
     debug_info("dlsym_realpath: Path => %s\n",path);
 
     if (real_realpath == NULL) {
-        real_realpath = (char* (*)(const char *restrict, char *restrict)) dlsym(RTLD_NEXT,"realpath");
+        real_realpath = (char* (*)(const char *__restrict__, char *__restrict__)) dlsym(RTLD_NEXT,"realpath");
     }
     
     char* ret = real_realpath((char *)path, (char *)resolved_path);

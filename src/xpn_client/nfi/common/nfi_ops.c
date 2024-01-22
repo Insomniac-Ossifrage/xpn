@@ -22,6 +22,7 @@
 
 #include "nfi/nfi_ops.h"
 
+#include <string.h>
 
 /* ... Functions / Funciones ......................................... */
 

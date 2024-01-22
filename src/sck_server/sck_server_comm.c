@@ -24,6 +24,15 @@
 
 #include "sck_server/sck_server_comm.h"
 
+   #include <bits/local_lim.h>
+   #include <netdb.h>
+   #include <netinet/in.h>
+   #include <netinet/tcp.h>
+   #include <stdio.h>
+   #include <string.h>
+   #include <unistd.h>
+
+   #include "base/debug_msg.h"
 
 /* ... Const / Const ................................................. */
 

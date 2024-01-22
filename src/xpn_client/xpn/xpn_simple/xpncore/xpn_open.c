@@ -20,9 +20,10 @@
 
 #include "xpn/xpn_simple/xpn_open.h"
 
-#include "xpn/xpn_simple/xpn_opendir.h"
-
 #include <fcntl.h>
+#include <string.h>
+
+#include "xpn/xpn_simple/xpn_opendir.h"
 
 #define MASK 0000777
 

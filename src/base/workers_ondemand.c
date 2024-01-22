@@ -25,6 +25,7 @@
 #include "workers_ondemand.h"
 
 #include <pthread.h>
+#include <string.h>
 
   /* ... Functions / Funciones ......................................... */
 

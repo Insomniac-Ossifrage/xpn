@@ -19,8 +19,9 @@
    *
    */
 
-
 #include "xpn/xpn_simple/xpn_cwd.h"
+
+#include <string.h>
 
 struct xpn_cwd xpn_cwddir;
 

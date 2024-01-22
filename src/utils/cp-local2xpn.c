@@ -20,11 +20,13 @@
    */
 
 
+#include "all_system.h"
+#include "xpn.h"
+
+#include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "all_system.h"
-#include "xpn.h"
 
 
 #define DATAM (256*KB)

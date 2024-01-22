@@ -19,8 +19,9 @@
    *
    */
 
-
 #include "xpn/xpn_simple/xpn_policy_rw.h"
+
+#include <string.h>
 
 /**
  * Calculates the server and the offset in that server of the given offset of a file.

@@ -20,9 +20,11 @@
 
   /* ... Include / Inclusion ........................................... */
 
-     #include "filesystem.h"
+#include "filesystem.h"
 
-  /* ... Varibles ........................................... */
+#include <string.h>
+
+/* ... Varibles ........................................... */
 
      //pthread_attr_t filesystem_attr;
 

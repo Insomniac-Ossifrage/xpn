@@ -20,14 +20,12 @@
  */
 
 
-#ifndef _XPN_BYPASS_H_
-#define _XPN_BYPASS_H_
+#ifndef XPN_BYPASS_H_
+#define XPN_BYPASS_H_
 
   /* ... Include / Inclusion ........................................... */
 
   #define _GNU_SOURCE
-
-  #include "config.h"
 
   #include <dlfcn.h>
   #include <sys/stat.h>
@@ -228,4 +226,4 @@
 
   /* ................................................................... */
 
-#endif
+#endif // XPN_BYPASS_H_
