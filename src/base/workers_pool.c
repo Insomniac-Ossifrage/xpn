@@ -22,8 +22,10 @@
 
   /* ... Include / Inclusion ........................................... */
 
-     #include "workers_pool.h"
+#include "workers_pool.h"
 
+#include <pthread.h>
+#include <unistd.h>
 
   /* ... Functions / Funciones ......................................... */
 
