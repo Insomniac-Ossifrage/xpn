@@ -22,6 +22,8 @@
 
 #include "xpn/xpn_simple/xpn_opendir.h"
 
+#include <fcntl.h>
+
 #define MASK 0000777
 
 extern struct xpn_filedesc * xpn_file_table[XPN_MAX_FILE];

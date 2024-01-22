@@ -23,6 +23,10 @@
 
 #include "sck_server_comm.h"
 
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <unistd.h>
 
 /* ... Const / Const ................................................. */
 
