@@ -94,7 +94,20 @@ target_include_directories(xpn_sck_server PUBLIC
 target_link_libraries(xpn_sck_server PUBLIC xpn_base xpn_client)
 target_compile_options(xpn_sck_server PRIVATE "-D_REENTRANT" "-DPOSIX_THREADS" "-D_GNU_SOURCE" "-DHAVE_STRUCT_IOVEC")
 
+#[[
+    XPN MPI Server
+]]
+find_package(MPI REQUIRED)
 
+file(GLOB _xpn_mpi_server_sources "src/mpi_server/*.c")
+add_executable(xpn_mpi_server ${_xpn_mpi_server_sources})
+target_include_directories(xpn_mpi_server PUBLIC
+    "${PROJECT_SOURCE_DIR}/include"
+    "${PROJECT_SOURCE_DIR}/include/base"
+    "${PROJECT_SOURCE_DIR}/include/mpi_server"
+    "${PROJECT_SOURCE_DIR}/include/xpn_client"
+)
+target_link_libraries(xpn_mpi_server PRIVATE xpn_base xpn_client MPI::MPI_C )
 
 #[[
     XPN Bypass
