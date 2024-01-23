@@ -25,6 +25,7 @@
 #include "workers_pool.h"
 
 #include <pthread.h>
+#include <string.h>
 #include <unistd.h>
 
   /* ... Functions / Funciones ......................................... */

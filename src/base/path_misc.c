@@ -22,10 +22,11 @@
 
    /* ... Include / Inclusion ........................................... */
 
-      #include "base/path_misc.h"
+#include "base/path_misc.h"
 
+#include <string.h>
 
-   /* ... Functions / Funciones ......................................... */
+/* ... Functions / Funciones ......................................... */
 
 
       //calculo del numero de servidor

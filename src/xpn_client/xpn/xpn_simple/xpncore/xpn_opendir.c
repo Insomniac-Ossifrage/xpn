@@ -19,12 +19,14 @@
    *
    */
 
+#include "xpn/xpn_simple/xpn_opendir.h"
+
 
 #include "xpn.h"
 #include "xpn/xpn_simple/xpn_open.h"
-#include "xpn/xpn_simple/xpn_opendir.h"
 #include "xpn/xpn_simple/xpn_policy_opendir.h"
 
+#include <string.h>
 
 DIR *xpn_simple_opendir(const char *path)
 {

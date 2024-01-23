@@ -22,10 +22,11 @@
 
    /* ... Include / Inclusion ........................................... */
 
-      #include "base/string_misc.h"
+#include "base/string_misc.h"
 
+#include <string.h>
 
-   /* ... Functions / Funciones ......................................... */
+/* ... Functions / Funciones ......................................... */
 
 
     /**

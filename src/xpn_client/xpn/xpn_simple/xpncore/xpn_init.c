@@ -19,9 +19,9 @@
    *
    */
 
-
 #include "xpn/xpn_simple/xpn_init.h"
 
+#include <string.h>
 
 struct xpn_partition xpn_parttable[XPN_MAX_PART];
 pthread_mutex_t xpn_init_mutex = PTHREAD_MUTEX_INITIALIZER;

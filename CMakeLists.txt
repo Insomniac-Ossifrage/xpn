@@ -23,7 +23,7 @@ add_compile_options("-D_POSIX_C_SOURCE=200809L") # Enable POSIX extensions
     XPN Base
 ]]
 
-file(GLOB _base_sources "src/base/*.c" )
+file(GLOB _base_sources "src/base/*.c")
 add_library(xpn_base OBJECT ${_base_sources})
 target_include_directories(xpn_base PUBLIC
     "${PROJECT_SOURCE_DIR}/include"
@@ -37,16 +37,12 @@ target_link_libraries(xpn_base PUBLIC Threads::Threads)
 ]]
 
 # NFI Variants
-#option(ENABLE_XPN_CLIENT_NFS    "Enable NFS support for XPN client"     OFF)
-#option(ENABLE_XPN_CLIENT_NFS3   "Enable NFS3 support for XPN client"    OFF)
-#option(ENABLE_XPN_CLIENT_MPI    "Enable MPI support for XPN client"     OFF)
-option(ENABLE_XPN_CLIENT_SCK    "Enable SCK support for XPN client"     ON)
-#option(ENABLE_XPN_CLIENT_TCP    "Enable TCP support for XPN client"     OFF)
+option(ENABLE_XPN_CLIENT_SCK "Enable SCK support for XPN client" ON)
 
 if (ENABLE_XPN_CLIENT_SCK)
-    file(GLOB _xpn_client_sck_sources "src/xpn_client/nfi/nfi_sck_server/*.c")
-    list(APPEND _xpn_client_nfi_extra_sources ${_xpn_client_sck_sources})
-    list(APPEND _xpn_client_nfi_extra_includes "${PROJECT_SOURCE_DIR}/include/xpn_client/nfi/nfi_sck_server")
+  file(GLOB _xpn_client_sck_sources "src/xpn_client/nfi/nfi_sck_server/*.c")
+  list(APPEND _xpn_client_nfi_extra_sources ${_xpn_client_sck_sources})
+  list(APPEND _xpn_client_nfi_extra_includes "${PROJECT_SOURCE_DIR}/include/xpn_client/nfi/nfi_sck_server")
 endif (ENABLE_XPN_CLIENT_SCK)
 
 # NFI Sources
@@ -60,6 +56,22 @@ file(GLOB _xpn_client_ep "src/xpn_client/*.c")
 
 # Main library
 # AM_CFLAGS         = -DASYNC_CLOSE=1 -DFILESYSTEM_DLSYM=1
+
+# Compile C files as C++
+set_source_files_properties(
+    ${_base_sources}
+    ${_xpn_client_core}
+    ${_xpn_client_policy}
+    ${_xpn_client_ep}
+    PROPERTIES LANGUAGE CXX
+)
+
+set_source_files_properties(
+    ${_xpn_client_nfi_sources_common}
+    ${_xpn_client_nfi_sources_local}
+    ${_xpn_client_nfi_extra_sources}
+    PROPERTIES LANGUAGE CXX
+)
 
 add_library(xpn_client SHARED
     ${_base_sources}
@@ -79,6 +91,7 @@ target_include_directories(xpn_client PUBLIC
     "${PROJECT_SOURCE_DIR}/include/xpn_client/xpn/xpn_simple"
     ${_xpn_client_nfi_extra_includes}
 )
+target_compile_options(xpn_client PRIVATE "-fpermissive")
 
 #[[
     XPN SCK Server
@@ -107,7 +120,7 @@ target_include_directories(xpn_mpi_server PUBLIC
     "${PROJECT_SOURCE_DIR}/include/mpi_server"
     "${PROJECT_SOURCE_DIR}/include/xpn_client"
 )
-target_link_libraries(xpn_mpi_server PRIVATE xpn_base xpn_client MPI::MPI_C )
+target_link_libraries(xpn_mpi_server PRIVATE xpn_base xpn_client MPI::MPI_C)
 
 #[[
     XPN Bypass

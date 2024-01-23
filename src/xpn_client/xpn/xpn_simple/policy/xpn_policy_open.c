@@ -19,10 +19,9 @@
    *
    */
 
-
 #include "xpn/xpn_simple/xpn_policy_open.h"
 
-
+#include <string.h>
 
 ssize_t XpnGetSizeThreads(struct xpn_partition *p)
 {

@@ -100,6 +100,9 @@
     #define real_posix_readdir(dirptr)                       dlsym_readdir(dirptr)
     #define real_posix_closedir(dirptr)                      dlsym_closedir(dirptr)
   #else
+    #include <fcntl.h>
+    #include <unistd.h>
+
     #define real_posix_creat(path,mode)                      creat(path,mode)
     #define real_posix_open(path,flags)                      open(path,flags)
     #define real_posix_open2(path,flags,mode)                open(path,flags,mode)

@@ -19,9 +19,9 @@
    *
    */
 
-
 #include "xpn/xpn_simple/xpn_rw.h"
 
+#include <string.h>
 
 //extern pthread_mutex_t global_mt;
 

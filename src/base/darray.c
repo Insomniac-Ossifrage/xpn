@@ -24,6 +24,8 @@
 
       #include "base/darray.h"
 
+      #include <string.h>
+
 
    /* ... Functions / Funciones ......................................... */
 

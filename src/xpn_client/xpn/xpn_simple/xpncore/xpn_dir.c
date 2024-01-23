@@ -19,9 +19,9 @@
    *
    */
 
-
 #include "xpn/xpn_simple/xpn_dir.h"
 
+#include <string.h>
 
 int xpn_simple_mkdir(const char *path, mode_t perm)
 {
