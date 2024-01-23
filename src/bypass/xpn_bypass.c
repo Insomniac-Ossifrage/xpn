@@ -24,6 +24,7 @@
 
 #include "xpn_bypass.h"
 
+#include <unistd.h>
 
 /* ... Const / Const ................................................. */
 

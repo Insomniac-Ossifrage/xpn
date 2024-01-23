@@ -79,3 +79,9 @@ target_include_directories(xpn_client PUBLIC
     "${PROJECT_SOURCE_DIR}/include/xpn_client/xpn/xpn_simple"
     ${_xpn_client_nfi_extra_includes}
 )
+
+#[[
+    XPN Bypass
+]]
+add_subdirectory(src/bypass)
+
