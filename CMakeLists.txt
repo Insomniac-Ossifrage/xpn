@@ -81,7 +81,25 @@ target_include_directories(xpn_client PUBLIC
 )
 
 #[[
+    XPN SCK Server
+]]
+file(GLOB _xpn_sck_server_sources "src/sck_server/*.c")
+add_executable(xpn_sck_server ${_xpn_sck_server_sources})
+target_include_directories(xpn_sck_server PUBLIC
+    "${PROJECT_SOURCE_DIR}/include"
+    "${PROJECT_SOURCE_DIR}/include/base"
+    "${PROJECT_SOURCE_DIR}/include/sck_server"
+    "${PROJECT_SOURCE_DIR}/include/xpn_client"
+)
+target_link_libraries(xpn_sck_server PUBLIC xpn_base xpn_client)
+target_compile_options(xpn_sck_server PRIVATE "-D_REENTRANT" "-DPOSIX_THREADS" "-D_GNU_SOURCE" "-DHAVE_STRUCT_IOVEC")
+
+
+
+#[[
     XPN Bypass
 ]]
 add_subdirectory(src/bypass)
+
+
 
