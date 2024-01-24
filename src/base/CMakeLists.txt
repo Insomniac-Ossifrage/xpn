@@ -1,30 +1,58 @@
-# TODO: Remove globbing and add files manually
-file(GLOB _xpn_base_headers "${PROJECT_SOURCE_DIR}/include/base/*.h")
-file(GLOB _xpn_base_sources "*.c")
+set(_header_path "${PROJECT_SOURCE_DIR}/include/base")
 
-# Compile C files as C++
-set_source_files_properties(${_xpn_base_sources}
-    PROPERTIES
-    LANGUAGE CXX
+set(_headers
+  "${_header_path}/darray.h"
+  "${_header_path}/debug_msg.h"
+  "${_header_path}/dtable.h"
+  "${_header_path}/filesystem.h"
+  "${_header_path}/math_misc.h"
+  "${_header_path}/ns.h"
+  "${_header_path}/path_misc.h"
+  "${_header_path}/string_misc.h"
+  "${_header_path}/syscall_proxies.h"
+  "${_header_path}/time_misc.h"
+  "${_header_path}/trace_msg.h"
+  "${_header_path}/urlstr.h"
+  "${_header_path}/utils.h"
+  "${_header_path}/workers.h"
+  "${_header_path}/workers_ondemand.h"
+  "${_header_path}/workers_pool.h"
 )
 
-# TODO: Remove this flag
-# There is a void * to char * conversion in syscall_proxies.c
-set_source_files_properties(
-    syscall_proxies.c
-    COMPILE_FLAGS "-fpermissive"
+set(_sources
+  "darray.c"
+  "debug_msg.c"
+  "dtable.c"
+  "filesystem.c"
+  "math_misc.c"
+  "ns.c"
+  "path_misc.c"
+  "string_misc.c"
+  "syscall_proxies.c"
+  "time_misc.c"
+  "trace_msg.c"
+  "urlstr.c"
+  "utils.c"
+  "workers.c"
+  "workers_ondemand.c"
+  "workers_pool.c"
 )
+enable_cpp(${_sources})
 
-#[[
-  Target: XPN::base
-]]
+# TODO: Remove when files are fixed
+if (XPN_ENABLE_CPP)
+  set_source_files_properties(
+      "syscall_proxies.c"
+      COMPILE_FLAGS "-fpermissive"
+  )
+endif()
 
-add_library(xpn_base OBJECT
-  ${_xpn_base_headers}
-  ${_xpn_base_sources}
-)
+
+add_library(xpn_base OBJECT ${_sources} ${_headers})
+
 target_include_directories(xpn_base PUBLIC
     "${PROJECT_SOURCE_DIR}/include"
     "${PROJECT_SOURCE_DIR}/include/base"
 )
+
 add_library(XPN::Base ALIAS xpn_base)
