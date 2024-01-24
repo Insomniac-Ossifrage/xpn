@@ -6,6 +6,7 @@ set(_headers
   "${_header_path}/xpn_policy_open.h"
   "${_header_path}/xpn_policy_opendir.h"
   "${_header_path}/xpn_policy_rw.h"
+  "${_header_path}/xpn.h"
 )
 
 set(_sources
@@ -17,11 +18,13 @@ set(_sources
 )
 enable_cpp(${_sources})
 
-add_library(xpn_client_policy OBJECT ${_sources} ${_headers})
-target_include_directories(xpn_client_policy PRIVATE
+add_library(xpn_client_policy INTERFACE)
+target_sources(xpn_client_policy INTERFACE ${_sources} ${_headers})
+
+target_include_directories(xpn_client_policy INTERFACE
     "${PROJECT_SOURCE_DIR}/include/xpn_client"
 )
-target_link_libraries(xpn_client_policy PRIVATE
+target_link_libraries(xpn_client_policy INTERFACE
     XPN::Base # all_systems.h
     XPN::Client::NFI::Local # nfi.h depends on nfi_local.h
 )

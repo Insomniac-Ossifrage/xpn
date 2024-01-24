@@ -15,9 +15,22 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 #[[
   XPN - Global Options
 ]]
+
 # Compile XPN as C++
 include(enable_cpp)
 option(XPN_ENABLE_CPP "Compile XPN as C++" ON)
+
+# Enable SCK support for NFI
+option(XPN_ENABLE_NFI_SCK "Enable SCK NFI support" ON)
+if (XPN_ENABLE_NFI_SCK)
+  add_compile_definitions(ENABLE_SCK_SERVER) # nfi_lib.h xpn_policy_init.c
+endif (XPN_ENABLE_NFI_SCK)
+
+# Build XPN as shared library
+option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
+if (BUILD_SHARED_LIBS)
+  set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+endif (BUILD_SHARED_LIBS)
 
 
 #[[

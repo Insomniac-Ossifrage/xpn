@@ -12,11 +12,15 @@ set(_headers
   "${_header_path}/syscall_proxies.h"
   "${_header_path}/time_misc.h"
   "${_header_path}/trace_msg.h"
+  "${_header_path}/trace_tags.h"
   "${_header_path}/urlstr.h"
   "${_header_path}/utils.h"
   "${_header_path}/workers.h"
+  "${_header_path}/workers_common.h"
   "${_header_path}/workers_ondemand.h"
   "${_header_path}/workers_pool.h"
+
+  "${PROJECT_SOURCE_DIR}/include/all_system.h"
 )
 
 set(_sources
@@ -46,7 +50,6 @@ if (XPN_ENABLE_CPP)
       COMPILE_FLAGS "-fpermissive"
   )
 endif()
-
 
 add_library(xpn_base OBJECT ${_sources} ${_headers})
 

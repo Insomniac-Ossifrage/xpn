@@ -17,3 +17,14 @@ target_link_libraries(nfi INTERFACE
 )
 
 add_library(XPN::Client::NFI ALIAS nfi)
+
+#[[
+  NFI Extras
+]]
+
+if (XPN_ENABLE_NFI_SCK)
+  message(STATUS "NFI SCK Server enabled")
+  add_subdirectory(nfi_sck_server)
+  target_sources(nfi INTERFACE $<TARGET_OBJECTS:XPN::Client::NFI::SCK>)
+  target_link_libraries(nfi INTERFACE XPN::Client::NFI::SCK)
+endif ()

@@ -20,8 +20,12 @@
  */
 
 
-#ifndef _SCK_SERVER_COMM_H_
-#define _SCK_SERVER_COMM_H_
+#ifndef SCK_SERVER_COMM_H_
+#define SCK_SERVER_COMM_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
   /* ... Include / Inclusion ........................................... */
 
@@ -55,4 +59,9 @@
 
   /* ................................................................... */
 
+#ifdef __cplusplus
+  }
 #endif
+
+#endif // SCK_SERVER_COMM_H_
+
