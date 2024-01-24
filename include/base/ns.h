@@ -20,8 +20,12 @@
  */
 
 
-#ifndef _NS_H_
-#define _NS_H_
+#ifndef NS_H_
+#define NS_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
   /* ... Include / Inclusion ........................................... */
 
@@ -66,4 +70,8 @@
 
   /* ................................................................... */
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif // NS_H_

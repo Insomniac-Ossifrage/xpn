@@ -20,8 +20,13 @@
  */
 
 
-#ifndef _WORKERS_POOL_H_
-#define _WORKERS_POOL_H_
+#ifndef WORKERS_POOL_H_
+#define WORKERS_POOL_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
   /* ... Include / Inclusion ........................................... */
 
@@ -70,4 +75,8 @@
 
   /* ................................................................... */
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif // WORKERS_POOL_H_

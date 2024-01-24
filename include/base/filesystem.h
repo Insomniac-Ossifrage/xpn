@@ -20,8 +20,12 @@
  */
 
 
-#ifndef _FILESYSTEM_H_
-#define _FILESYSTEM_H_
+#ifndef FILESYSTEM_H_
+#define FILESYSTEM_H_
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
   /* ... Include / Inclusion ........................................... */
 
@@ -125,4 +129,8 @@
     #define real_posix_closedir(dirptr)                      closedir(dirptr)
   #endif
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif // FILESYSTEM_H_
