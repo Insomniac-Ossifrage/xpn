@@ -15,9 +15,9 @@ set(_sources
   "xpn_policy_opendir.c"
   "xpn_policy_rw.c"
 )
+enable_cpp(${_sources})
 
-
-add_library(xpn_client_policy STATIC ${_sources} ${_headers})
+add_library(xpn_client_policy OBJECT ${_sources} ${_headers})
 target_include_directories(xpn_client_policy PRIVATE
     "${PROJECT_SOURCE_DIR}/include/xpn_client"
 )

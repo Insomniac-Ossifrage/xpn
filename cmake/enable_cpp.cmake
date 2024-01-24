@@ -1,0 +1,5 @@
+function(enable_cpp)
+  if(XPN_ENABLE_CPP)
+    set_source_files_properties(${ARGN} PROPERTIES LANGUAGE CXX)
+  endif()
+endfunction()

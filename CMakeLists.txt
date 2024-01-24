@@ -7,6 +7,10 @@ set(CMAKE_C_EXTENSIONS ON)
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+include(enable_cpp)
+option(XPN_ENABLE_CPP "Compile XPN as C++" ON)
+
 # Packages
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)

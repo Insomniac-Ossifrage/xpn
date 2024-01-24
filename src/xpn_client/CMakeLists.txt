@@ -17,7 +17,9 @@ set(_sources
   "xpn_unistd.c"
 )
 
+enable_cpp(${_sources})
+
 add_library(xpn_client STATIC ${_sources} ${_headers})
-target_link_libraries(xpn_client PRIVATE XPN::Base XPN::Client::Core XPN::Client::Policy XPN::Client::NFI::Local)
+target_link_libraries(xpn_client PRIVATE XPN::Base XPN::Client::Core XPN::Client::Policy XPN::Client::NFI)
 target_compile_options(xpn_client PRIVATE "-fpermissive")
 

@@ -23,9 +23,17 @@ set(_sources
     "xpn_rw.c"
     "xpn_stdio.c"
 )
+enable_cpp(${_sources})
 
+# TODO: Remove when xpn_stdio.c is fixed
+if (XPN_ENABLE_CPP)
+  set_source_files_properties(
+      xpn_stdio.c
+      COMPILE_FLAGS "-fpermissive"
+  )
+endif()
 
-add_library(xpn_client_core STATIC ${_sources} ${_headers})
+add_library(xpn_client_core OBJECT ${_sources} ${_headers})
 target_include_directories(xpn_client_core PRIVATE
     "${PROJECT_SOURCE_DIR}/include/xpn_client"
     "${PROJECT_SOURCE_DIR}/include/xpn_client/xpn/xpn_simple"
