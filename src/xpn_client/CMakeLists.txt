@@ -16,10 +16,10 @@ set(_sources
   "xpn_stdio.c"
   "xpn_unistd.c"
 )
-
 enable_cpp(${_sources})
 
 add_library(xpn_client STATIC ${_sources} ${_headers})
+target_include_directories(xpn_client PUBLIC "${PROJECT_SOURCE_DIR}/include/xpn_client")
 target_link_libraries(xpn_client PRIVATE XPN::Base XPN::Client::Core XPN::Client::Policy XPN::Client::NFI)
-target_compile_options(xpn_client PRIVATE "-fpermissive")
 
+add_library(XPN::Client ALIAS xpn_client)

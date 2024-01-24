@@ -23,8 +23,11 @@
 /* ... Include / Inclusion ........................................... */
 
 #include "sck_server_params.h"
-#include "base/ns.h"
 
+#include <string.h>
+#include <unistd.h>
+
+#include "base/ns.h"
 
 /* ... Const / Const ................................................. */
 
