@@ -20,11 +20,13 @@
    */
 
 
+#include "all_system.h"
+#include "xpn.h"
+
+#include <fcntl.h>
 #include <string.h>
 #include <sys/time.h>
 #include <unistd.h>
-#include "all_system.h"
-#include "xpn.h"
 
 
 #define BAR_LENGTH 50

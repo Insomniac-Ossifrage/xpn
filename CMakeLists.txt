@@ -55,5 +55,7 @@ add_subdirectory(src/sck_server)
 # XPN Bypass
 add_subdirectory(src/bypass)
 
+# XPN Utils
+add_subdirectory(src/utils)
 
 
